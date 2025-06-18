@@ -102,7 +102,7 @@ const Footer = () => {
                 <li key={index}>
                   <Link
                     to={item.href}
-                    className="text-gray-300 hover:text-red-400 transition-colors duration-200 text-sm block py-1 hover:translate-x-1 transform flex items-center space-x-2"
+                    className="text-gray-300 hover:text-red-400 transition-colors duration-200 text-sm py-1 hover:translate-x-1 transform flex items-center space-x-2"
                   >
                     {item.icon && <item.icon className="w-3 h-3" />}
                     <span>{item.label}</span>
