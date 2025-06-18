@@ -8,16 +8,22 @@ import { SignedIn, SignedOut, SignInButton, UserButton, } from "@clerk/clerk-rea
 import { CgClose } from "react-icons/cg";
 
 const Navbar = ({location, getLocation, openDropdown, setOpenDropdown}) => {
-  const toggleDropdown = ()=>{
+  const toggleDropdown = () => {
     setOpenDropdown(!openDropdown)
   } 
 
+  const handleLocationClick = () => {
+    if (getLocation) {
+      getLocation()
+    }
+  }
+
   return (
-    <div className="bg-white p-3 shadow-2xl">
+    <div className="bg-white p-3 shadow-2xl relative z-50">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         {/* logo section */}
         <div className="flex gap-7 items-center">
-          <Link to={"/home"}>
+          <Link to={"/"}>
             <h1 className="font-bold text-3xl">
               <span className="text-red-500 font-serif">Z</span>aptro
             </h1>
@@ -31,15 +37,15 @@ const Navbar = ({location, getLocation, openDropdown, setOpenDropdown}) => {
                 <p>{location.state}</p>
               </div> : "Add Address"}
             </span>
-            <FaCaretDown onClick={toggleDropdown}/>
+            <FaCaretDown onClick={toggleDropdown} className="hover:text-red-500 transition-colors"/>
           </div>
 
           {
-            openDropdown ? <div className="w-[250px] h-max shadow-2xl z-50 bg-white fixed top-16 left-60 border-2 p-5
+            openDropdown ? <div className="w-[250px] h-max shadow-2xl z-[60] bg-white fixed top-16 left-60 border-2 p-5
              border-gray-100 rounded-md">
               <h1 className="font-semibold mb-4 text-xl flex justify-between items-center">Change Location <span onClick={toggleDropdown
-              }><CgClose className="cursor-pointer"/></span></h1>
-              <button onClick={getLocation} className="bg-red-500 text-white px-3 py-1 rounded-md cursor-pointer hover:bg-red-400">Detect my Location</button>
+              }><CgClose className="cursor-pointer hover:text-red-500 transition-colors"/></span></h1>
+              <button onClick={handleLocationClick} className="bg-red-500 text-white px-3 py-1 rounded-md cursor-pointer hover:bg-red-400 transition-colors">Detect my Location</button>
             </div> : null
           }
         </div>
@@ -52,59 +58,59 @@ const Navbar = ({location, getLocation, openDropdown, setOpenDropdown}) => {
               className={({ isActive }) =>
                 ` ${
                   isActive
-                    ? "border-b-3 transition-all border-red-500 duration-300 hover:border-b-3"
-                    : "text-black"
+                    ? "border-b-2 border-red-500 text-red-500 transition-all duration-300"
+                    : "text-black hover:text-red-500 transition-all duration-300"
                 } cursor-pointer`
               }
             >
-              <li className="hover:text-blue-600">Home</li>
+              <li>Home</li>
             </NavLink>
             <NavLink
               to={"/products"}
               className={({ isActive }) =>
                 `${
                   isActive
-                    ? "border-b-3 transition-all border-red-500"
-                    : "text-black"
+                    ? "border-b-2 border-red-500 text-red-500 transition-all duration-300"
+                    : "text-black hover:text-red-500 transition-all duration-300"
                 } cursor-pointer`
               }
             >
-              <li className="hover:text-blue-600">Product</li>
+              <li>Product</li>
             </NavLink>
             <NavLink
               to={"/about"}
               className={({ isActive }) =>
                 `${
                   isActive
-                    ? "border-b-3 transition-all border-red-500"
-                    : "text-black"
+                    ? "border-b-2 border-red-500 text-red-500 transition-all duration-300"
+                    : "text-black hover:text-red-500 transition-all duration-300"
                 } cursor-pointer`
               }
             >
-              <li className="hover:text-blue-600">About</li>
+              <li>About</li>
             </NavLink>
             <NavLink
               to={"/contact"}
               className={({ isActive }) =>
                 `${
                   isActive
-                    ? "border-b-3 transition-all border-red-500"
-                    : "text-black"
+                    ? "border-b-2 border-red-500 text-red-500 transition-all duration-300"
+                    : "text-black hover:text-red-500 transition-all duration-300"
                 } cursor-pointer`
               }
             >
-              <li className="hover:text-blue-600">Contact</li>
+              <li>Contact</li>
             </NavLink>
           </ul>
 
-          <Link to={"/cart"} className="relative">
-            <IoCartOutline className="h-7 w-7"></IoCartOutline>
-            <span className="bg-red-500 px-2 rounded-full absolute -top-3 -right-3 text-white">0</span>
+          <Link to={"/cart"} className="relative hover:scale-110 transition-transform duration-200">
+            <IoCartOutline className="h-7 w-7 hover:text-red-500 transition-colors"></IoCartOutline>
+            <span className="bg-red-500 px-2 rounded-full absolute -top-3 -right-3 text-white text-sm">0</span>
           </Link>
 
           <div>
             <SignedOut>
-              <SignInButton className="bg-red-500 text-white px-3 py-1 rounded-md cursor-pointer" />
+              <SignInButton className="bg-red-500 text-white px-3 py-1 rounded-md cursor-pointer hover:bg-red-600 transition-colors" />
             </SignedOut>
             <SignedIn>
               <UserButton />
@@ -115,6 +121,5 @@ const Navbar = ({location, getLocation, openDropdown, setOpenDropdown}) => {
     </div>
   );
 };
-
 
 export default Navbar;
