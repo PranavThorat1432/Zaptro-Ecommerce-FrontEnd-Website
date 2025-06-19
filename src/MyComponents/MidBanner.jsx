@@ -14,7 +14,7 @@ const MidBanner = () => {
 
       <div className='relative max-w-7xl mx-auto px-4'>
         <div 
-          className='relative rounded-3xl overflow-hidden h-[650px] lg:h-[750px] bg-cover bg-center shadow-2xl'
+          className='relative rounded-3xl overflow-hidden h-[650px] lg:h-[750px] bg-cover bg-center shadow-2xl parallax-banner'
           style={{
             backgroundImage: `url(${banner})`, 
             backgroundPosition: 'center',
@@ -98,7 +98,7 @@ const MidBanner = () => {
         </div>
       </div>
 
-      {/* Custom CSS for animations */}
+      {/* Custom CSS for animations and parallax */}
       <style jsx>{`
         @keyframes fade-in {
           from { opacity: 0; }
@@ -128,6 +128,21 @@ const MidBanner = () => {
         }
         .delay-400 {
           animation-delay: 400ms;
+        }
+        
+        /* Parallax effect */
+        .parallax-banner {
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        
+        /* Fallback for mobile devices */
+        @media (max-width: 768px) {
+          .parallax-banner {
+            background-attachment: scroll;
+          }
         }
       `}</style>
     </div>
