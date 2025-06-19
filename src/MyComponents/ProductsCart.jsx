@@ -2,10 +2,14 @@ import React, { useState } from 'react'
 import { IoCartOutline } from 'react-icons/io5';
 import { IoHeartOutline, IoHeart } from 'react-icons/io5';
 import { IoStar } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../Context/CartContext';
 // import Products from '../Pages/Products';
 
 const ProductsCart = ({product}) => {
+  const navigate = useNavigate()
   const [isLiked, setIsLiked] = useState(false);
+    const {addToCart} = useCart()
   
   return (
     <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col h-full">
@@ -15,6 +19,7 @@ const ProductsCart = ({product}) => {
           src={product.image}
           alt={product.title}
           className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+          onClick={() => navigate(`/products/${product.id}`)}
         />
         
         {/* Like Button */}
@@ -77,7 +82,7 @@ const ProductsCart = ({product}) => {
         <div className="flex-1"></div>
         
         {/* Add to Cart Button */}
-        <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 px-3 rounded-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-2 shadow-md hover:shadow-lg text-sm">
+        <button onClick={() => addToCart(product)} className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 px-3 rounded-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-2 shadow-md hover:shadow-lg text-sm">
           <IoCartOutline className="w-4 h-4" />
           Add to Cart
         </button>
