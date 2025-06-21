@@ -82,7 +82,7 @@ const ProductsCart = ({product}) => {
         <div className="flex-1"></div>
         
         {/* Add to Cart Button */}
-        <button onClick={() => addToCart(product)} className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 px-3 rounded-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-2 shadow-md hover:shadow-lg text-sm">
+        <button onClick={() => addToCart(product)} className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 px-3 rounded-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-2 shadow-md hover:shadow-lg text-sm cursor-pointer">
           <IoCartOutline className="w-4 h-4" />
           Add to Cart
         </button>
