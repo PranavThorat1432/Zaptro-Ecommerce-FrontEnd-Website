@@ -8,7 +8,6 @@ import Category from './Category';
 
 const Carousel = () => {
     const {data, fetchAllProducts} = getData()
-    const [isPlaying, setIsPlaying] = useState(true);
 
     useEffect(() => {
         fetchAllProducts()
