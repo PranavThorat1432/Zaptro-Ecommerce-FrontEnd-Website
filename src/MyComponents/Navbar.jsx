@@ -7,10 +7,13 @@ import { IoCartOutline } from "react-icons/io5";
 import { SignedIn, SignedOut, SignInButton, UserButton, } from "@clerk/clerk-react";
 import { CgClose } from "react-icons/cg";
 import { useCart } from "../Context/CartContext";
+import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
+import ResponseiveMenu from "./ResponseiveMenu";
 
 const Navbar = ({location, getLocation, openDropdown, setOpenDropdown}) => {
 
   const {cartItem} = useCart()
+  const [openNav, setOpenNav] = useState(false);
 
   const toggleDropdown = () => {
     setOpenDropdown(!openDropdown)
@@ -23,9 +26,9 @@ const Navbar = ({location, getLocation, openDropdown, setOpenDropdown}) => {
   }
 
   return (
-    <div className="relative z-50">
+    <div className="relative z-50 ">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 overflow-hidden px-4 md:px-8">
         {/* Animated Background Pattern */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_25%_25%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:30px_30px] animate-pulse"></div>
@@ -47,12 +50,12 @@ const Navbar = ({location, getLocation, openDropdown, setOpenDropdown}) => {
           <div className="flex gap-7 items-center">
             <Link to={"/"} className="group">
               <h1 className="font-bold text-3xl text-white group-hover:scale-105 transition-transform duration-300">
-                <span className="text-red-400 font-serif bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">Z</span>
+                <span className="text-red-400 font-serif bg-gradient-to-r from-red-400 to-red-600 bg-clip-text">Z</span>
                 <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">aptro</span>
               </h1>
             </Link>
 
-            <div className="flex gap-2 cursor-pointer text-gray-200 items-center group hover:bg-white/10 p-2 rounded-lg transition-all duration-300">
+            <div className="md:flex gap-2 cursor-pointer text-gray-200 items-center group hover:bg-white/10 p-2 rounded-lg transition-all duration-300 hidden relative">
               <MapPin className="text-red-400 group-hover:scale-110 transition-transform" />
               <span className="font-semibold text-white">
                 {location ? (
@@ -63,7 +66,7 @@ const Navbar = ({location, getLocation, openDropdown, setOpenDropdown}) => {
                 ) : (
                   <span className="text-sm">Add Address</span>
                 )}
-              </span>
+              </span> 
               <FaCaretDown 
                 onClick={toggleDropdown} 
                 className="text-gray-400 group-hover:text-red-400 transition-colors hover:rotate-180 transform duration-300"
@@ -91,7 +94,7 @@ const Navbar = ({location, getLocation, openDropdown, setOpenDropdown}) => {
 
           {/* Menu section */}
           <nav className="flex gap-8 items-center">
-            <ul className="flex gap-8 items-center text-lg font-semibold">
+            <ul className="md:flex gap-8 items-center text-lg font-semibold hidden">
               <NavLink
                 to={"/"}
                 className={({ isActive }) =>
@@ -163,7 +166,7 @@ const Navbar = ({location, getLocation, openDropdown, setOpenDropdown}) => {
             </Link>
 
             {/* Auth Buttons */}
-            <div className="flex items-center gap-3">
+            <div className="items-center gap-3 hidden md:block">
               <SignedOut>
                 <SignInButton className="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg cursor-pointer hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg font-semibold" />
               </SignedOut>
@@ -173,8 +176,12 @@ const Navbar = ({location, getLocation, openDropdown, setOpenDropdown}) => {
                 </div>
               </SignedIn>
             </div>
+            {
+              openNav ? <HiMenuAlt3 onClick={() => setOpenNav(false)} className="text-white h-7 w-7 md:hidden"/> : <HiMenuAlt1 onClick={() => setOpenNav(true)} className="text-white h-7 w-7 md:hidden"/>
+            }
           </nav>
         </div>
+        <ResponseiveMenu openNav={openNav} setOpenNav={setOpenNav} />
       </div>
 
       {/* Custom CSS for animations */}
