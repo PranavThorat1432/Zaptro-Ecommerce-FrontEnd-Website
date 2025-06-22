@@ -30,10 +30,10 @@ export const CartProvider = ({children}) => {
                     let newUnit = item.quantity;
                     if (action === "increase") {
                         newUnit = newUnit + 1;
-                        toast.success('Product quantity incresed!')
+                        toast.success('Product quantity increased!')
                     } else if (action === "decrease") {
                         newUnit = newUnit - 1;
-                        toast.success('Product quantity decresed!')
+                        toast.success('Product quantity decreased!')
                     }
                     return newUnit > 0 ? { ...item, quantity: newUnit } : null;
                 }
