@@ -13,67 +13,29 @@ const Carousel = () => {
         fetchAllProducts()
     },[])
 
-    const SamplePrevArrow = (props) => {
-      const { className, style, onClick } = props;
-      return (
-        <div
-          onClick={onClick}
-          className={`arrow ${className}`}
-          style={{ zIndex: 10 }}
-        >
-          <AiOutlineArrowLeft
-            className="arrows"
-            style={{
-                ...style,
-                display: "block",
-                borderRadius: "50%",
-                backgroundColor: "#f53347",
-                color: "white",
-                position: "absolute",
-                padding: "10px",
-                left: "20px",
-                top: "50%",
-                transform: "translateY(-50%) translateX(50%)",
-                cursor: "pointer",
-                transition: "background-color 0.2s ease-in-out",
-            }}
-            onMouseOver={(e) => (e.target.style.backgroundColor = "#555")}
-            onMouseOut={(e) => (e.target.style.backgroundColor = "#f53347")}
-          />
+    const SamplePrevArrow = ({ onClick }) => (
+      <div
+        onClick={onClick}
+        className="absolute top-1/2 -translate-y-1/2 left-2 sm:left-4 z-20 cursor-pointer"
+        style={{ zIndex: 20 }}
+      >
+        <div className="bg-[#f53347] hover:bg-[#555] text-white rounded-full p-2 sm:p-3 transition-colors duration-200 ease-in-out shadow-md">
+          <AiOutlineArrowLeft className="w-4 h-4 sm:w-6 sm:h-6" />
         </div>
-      );
-    };
+      </div>
+    );
     
-    const SampleNextArrow = (props) => {
-      const { className, style, onClick } = props;
-      return (
-        <div
-          onClick={onClick}
-          className={`arrow ${className}`}
-          style={{ zIndex: 10 }}
-        >
-          <AiOutlineArrowRight
-            className="arrows"
-            style={{
-                ...style,
-                display: "block",
-                borderRadius: "50%",
-                backgroundColor: "#f53347",
-                color: "white",
-                position: "absolute",
-                padding: "10px",
-                right: "20px",
-                top: "50%",
-                transform: "translateY(-50%) translateX(-50%)",
-                cursor: "pointer",
-                transition: "background-color 0.2s ease-in-out",
-            }}
-            onMouseOver={(e) => (e.target.style.backgroundColor = "#555")}
-            onMouseOut={(e) => (e.target.style.backgroundColor = "#f53347")}
-          />
+    const SampleNextArrow = ({ onClick }) => (
+      <div
+        onClick={onClick}
+        className="absolute top-1/2 -translate-y-1/2 right-2 sm:right-4 z-20 cursor-pointer"
+        style={{ zIndex: 20 }}
+      >
+        <div className="bg-[#f53347] hover:bg-[#555] text-white rounded-full p-2 sm:p-3 transition-colors duration-200 ease-in-out shadow-md">
+          <AiOutlineArrowRight className="w-4 h-4 sm:w-6 sm:h-6" />
         </div>
-      );
-    };
+      </div>
+    );
     
     var settings = {
       autoplay: true,
@@ -102,24 +64,24 @@ const Carousel = () => {
                             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px] animate-pulse"></div>
                         </div>
 
-                        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 justify-center h-[600px] lg:h-[700px] items-center px-4 lg:px-8 max-w-7xl mx-auto relative z-10 pt-20 pb-16">
-                            <div className="space-y-6 lg:space-y-8 text-center lg:text-left max-w-2xl">
+                        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 justify-center items-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 min-h-[80vh] sm:min-h-[auto] py-24 sm:py-32 md:py-40">
+                            <div className="space-y-4 md:space-y-6 text-center lg:text-left max-w-2xl">
                                 {/* Badge inline with title */}
-                                <div className="inline-flex items-center px-6 py-3 bg-red-500/40 backdrop-blur-sm rounded-full border border-red-500/50">
+                                <div className="hidden md:inline-flex items-center px-6 py-3 bg-red-500/40 backdrop-blur-sm rounded-full border border-red-500/50">
                                     <h3 className="text-red-300 font-semibold text-sm">
                                         🚀 Powering Your World with the Best in Electronics
                                     </h3>
                                 </div>
 
                                 {/* Title */}
-                                <h1 className="text-4xl lg:text-6xl xl:text-5xl font-bold uppercase line-clamp-3 text-white leading-tight">
+                                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase line-clamp-3 text-white leading-tight">
                                     <span className="bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent">
                                         {item.title}
                                     </span>
                                 </h1>
 
                                 {/* Description */}
-                                <p className="text-lg lg:text-xl line-clamp-3 text-gray-300 leading-relaxed max-w-xl">
+                                <p className="text-base sm:text-lg line-clamp-3 text-gray-300 leading-relaxed max-w-xl">
                                     {item.description}
                                 </p>
 
@@ -164,8 +126,8 @@ const Carousel = () => {
                                     {/* Main image - KEEPING ORIGINAL HOVER EFFECT */}
                                     <img 
                                         src={item.image} 
-                                        alt={item.title} 
-                                        className='relative w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-2xl shadow-2xl shadow-red-400 hover:scale-105 transition-all duration-500 border border-white/20' 
+                                        // alt={item.title} 
+                                        className='relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-cover rounded-2xl shadow-2xl shadow-red-400 hover:scale-105 transition-all duration-500 border border-white/20' 
                                     />
                                     
                                     {/* Floating elements */}
