@@ -113,7 +113,7 @@ VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 Get your key from the [Clerk Dashboard](https://dashboard.clerk.com/).
 
 
-```
+
 ---
 ## 🧪 Run the Project
 
