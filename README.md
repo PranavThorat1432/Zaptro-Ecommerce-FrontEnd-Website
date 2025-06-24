@@ -173,7 +173,7 @@ This project is licensed under the [MIT License](./LICENSE). See the full licens
 📧 Email: [Click Here](mailto:pranavthorat95@gmail.com)
 🔗 GitHub: [Click Here](https://github.com/PranavThorat1432)
 🔗 LinkedIn: [Click Here](https://www.linkedin.com/in/curiouspranavthorat/)
-🔗 Live Preview: [Click Here]()
+🔗 Live Preview: [Click Here](https://zaptro-ecommerce-front-end-website.vercel.app/)
 
 > Built with focus, love, and dedication to modern web development.
 
