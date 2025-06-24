@@ -114,7 +114,7 @@ Get your key from the [Clerk Dashboard](https://dashboard.clerk.com/).
 
 
 ```
-
+---
 ## 🧪 Run the Project
 
 
