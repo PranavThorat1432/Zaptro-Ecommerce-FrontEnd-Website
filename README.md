@@ -114,7 +114,7 @@ Get your key from the [Clerk Dashboard](https://dashboard.clerk.com/).
 
 
 ```
-
+---
 ## 🧪 Run the Project
 
 
@@ -125,6 +125,7 @@ Open `http://localhost:5173` in your browser.
 
 
 ```
+---
 ## 📁 Folder Structure
 
 ```
